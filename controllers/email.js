@@ -19,7 +19,7 @@ oauth2Client.setCredentials({
 const accessToken = oauth2Client.getAccessToken();
 
 
-async function sendTextEmail(to,subject,body) {
+async function sendTextEmail(to,subject,body,attachments) {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -40,7 +40,8 @@ async function sendTextEmail(to,subject,body) {
         from: env.emailId, // sender address
         to: to,            // list of receivers
         subject: subject,  // Subject line
-        text: body         // plain text body
+        text: body,
+        attachments: attachments        // plain text body
     };
     transporter.sendMail(mailOptions, function (error,info) {
         if(error) {

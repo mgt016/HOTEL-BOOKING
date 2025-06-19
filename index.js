@@ -6,7 +6,7 @@ const helmet = require('helmet');
 const path = require('path');
 var useragent = require('express-useragent');
 
-const router = require('./routes/v1/admin/admin');
+const router = require('./routes/v1/user');
 const routerUser = require('./routes/v1/user/user')
 
 let app = express();
@@ -53,9 +53,9 @@ mongoose.connect('mongodb+srv://milangthomas00:kunaguero16@cluster0.xdf6qpy.mong
 });
 
 app.use(express.json());
-app.use('/v1/admin', router);  
+app.use('/v1', router);  
 app.use('/v1/user', routerUser);
-app.use('/v1/admin', router);
+
 
 
 const server = app.listen(port, function () {

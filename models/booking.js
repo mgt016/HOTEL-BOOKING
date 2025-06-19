@@ -1,8 +1,13 @@
 const mongoose = require('mongoose');
+const { Category } = require('./category');
 const bookingSchema = new mongoose.Schema({
-    roomno: {
-        type: Number,
-        required: true
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref : 'Login'
+    },
+    Category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category'
     },
     no_of_rooms: {
         type: Number,
@@ -24,7 +29,7 @@ const bookingSchema = new mongoose.Schema({
         type: Boolean,
         default: true
     }
-})
+});
 
 const Booking = new mongoose.model('Booking', bookingSchema);
 module.exports = {Booking};
